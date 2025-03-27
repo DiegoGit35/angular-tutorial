@@ -24,7 +24,15 @@ import {HousingService} from '../housing.service';
 })
 export class HomeComponent {
   housingLocationList: HousingLocation[] = [];
-constructor(private housingService: HousingService) {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
+// constructor(private housingService: HousingService) {
+//     this.housingLocationList = this.housingService.getAllHousingLocations();
+//   }
+
+  constructor(private housingServise: HousingService){
+    this.housingServise.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+      this.housingLocationList = housingLocationList;
+      // this.filteredLocationList = housingLocationList;
+    }
+  )
   }
 }
